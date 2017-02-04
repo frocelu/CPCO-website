@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>中部施工處-訂餐系統首頁</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/scripts/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/static/scripts/js/jquery-ui-1.12.1.js"></script>
+    <script type="text/javascript" src="/static/scripts/jquery-ui.multidatespicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/scripts/css/mdp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!--[if IE]>
+        <link rel="stylesheet" type="text/css" href="/static/css/d676_ie8_theme.css">
+    <![endif]-->
+    <!--[if !(IE)]><!-->
+    <link rel="stylesheet" type="text/css" href="/static/css/d676_theme.css">
+    <!--<![endif]-->
+</head>
+<body>
+    <div class="order_navibar">
+        <h1 class="navititle" style="text-align:center;margin:0px auto;">中部施工處-訂餐系統</h1>
+    </div>
+    <div style="position: relative; margin-left: 10%">
+        <div style="text-align: center">
+            <div style="margin: 0 20% 0 60%;"><p style="font-size: 20px">歡迎您：{{姓名}}</p></div>
+        </div>
+        <div>
+            <h2 class="label_btn">一般成員功能選項：</h2>
+            <div><h3 style="margin-left: 7%">有AD帳號即可登入，可代替同組成員訂餐</h3></div>
+            <div class="div_btn"><a href="input_order/" class="a_btn">輸入訂單</a></div>
+            <div class="div_btn"><a href="check_order/" class="a_btn">查詢訂餐狀況</a></div>
+            <div style="clear:left"></div>        
+        </div>
+        <br>
+    {% if 使用者 %}
+        <div>
+            <h2 class="label_btn">伙食團成員功能選項：</h2>
+            <div><h3 style="margin-left: 7%">須有伙食團權限</h3></div>
+            <div class="div_btn"><a href="set_user_default_state/" class="a_btn">輸入預設設定</a></div>
+        </div>
+        <div style="clear:left"></div>
+        <br>
+    {% endif %}
+    {% if 管理者 %}
+        <div>
+            <h2 class="label_btn">伙食團管理者功能選項：</h2>
+            <div><h3 style="margin-left: 7%">須有伙食團管理者權限</h3></div>
+            <div class="div_btn" id="statics"><a href="temp_to_order/" class="a_btn">產生每日統計</a></div>
+            <div class="div_btn"><a href="modify_user/" class="a_btn" style="font-size: 18px">管理使用者權限</a></div>
+            <div class="div_btn"><a href="check_daily_quantity/" class="a_btn">確認每日數量</a></div>
+            <div class="div_btn"><a href="check_monthly_quantity/" class="a_btn">確認每月數量</a></div>
+            <div class="div_btn"><a href="pressing_input/" class="a_btn">臨時輸入</a></div>
+            <div class="div_btn"><a href="/holidays/" class="a_btn">假期輸入</a></div>
+        </div>
+        <div style="clear:left"></div>
+        <br>
+    {% endif %}
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+    <!-- Modal content -->
+        <div class="modal-content">
+            <div id="div1" class="fa"></div>
+            正在處理中，請稍後...
+        </div>
+    </div>
+</body>
+<script>
+        $('#statics').click(function(){
+        $('#myModal').delay(5000).show();
+    });
+
+    function hourglass() {
+        var a;
+        a = document.getElementById("div1");
+        a.innerHTML = "&#xf251;";
+        setTimeout(function () {
+            a.innerHTML = "&#xf252;";
+            }, 1000);
+        setTimeout(function () {
+            a.innerHTML = "&#xf253;";
+            }, 2000);
+        }
+        hourglass();
+        setInterval(hourglass, 3000);
+</script>
+</html>

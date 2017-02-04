@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>重設週末</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="/static/scripts/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/static/scripts/js/jquery-ui-1.12.1.js"></script>
+    <script type="text/javascript" src="/static/scripts/jquery-ui.multidatespicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/scripts/css/mdp.css">
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" href="/static/css/d676_ie8_theme.css">
+    <![endif]-->
+    <!--[if IE 9]>
+        <link rel="stylesheet" type="text/css" href="/static/css/d676_ie9_theme.css">
+    <![endif]-->
+    <!--[if !(IE)]><!-->
+    <link rel="stylesheet" type="text/css" href="/static/css/d676_theme.css">
+    <!--<![endif]-->
+</head>
+
+<body>
+    <div style="text-align:center;">
+        <div class="navibar">
+            <h1 class="navititle" style="text-align:center;margin:0px auto;">中部施工處-假日設定系統</h1>
+        </div>
+        <div style="text-align:center;">
+            <div class="warning-block" style="width:75%;text-align:center;padding:0 3%">
+                <p>警告：本功能將把輸入年度之假日設定，重設為週末、週日，原本設定之國定假日、補班日等將會消失，請謹慎使用！</p>
+            </div>
+            <form method="POST" action="" style="width:auto;">
+                {% csrf_token %}
+                <input type="text" name="the_year" id="input_year" value="請輸入西元年度（4位數字）" onfocus="if(this.value=='請輸入西元年度（4位數字）'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='請輸入西元年度（4位數字）'){this.value='請輸入西元年度（4位數字）';this.style.color='gray';}"
+                />
+                <input type="submit" id="btn_go" value="初始化年度週末" />
+            </form>
+            {% if errors %}
+            <div class="alert-block">
+                <p>{{ errors }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="footer">
+        <div style="margin:0px auto;">
+            <pre>網站維護人：資訊課陸培中     分機：3316</pre>
+            <!--[if IE]>
+                    <pre>建議使用chrome或firefox瀏覽器，以獲得最佳瀏覽效果。</pre>
+                <![endif]-->
+        </div>
+    </div>
+</body>
+
+</html>

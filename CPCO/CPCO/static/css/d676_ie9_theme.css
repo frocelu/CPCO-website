@@ -1,0 +1,84 @@
+body {
+	font: 0.8em/1.6em "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+	background: white;
+}
+
+code, pre.code {
+	font: 11px/13px monospace;
+	background-color: #FFC;
+	padding: 2px;
+	border: 1px dotted grey;
+}
+
+.clear {clear: both;}
+
+.navititle{
+    font-size: 30px;
+    color:white;
+}
+
+.link {
+    font-size:16px; 
+    color: darkred;
+    padding: 0px 1%;
+    border: 2px dotted balck;
+}
+
+a:hover {text-decoration: underline;}
+
+
+.btn {
+	width:100px;
+    height:30px;
+	border-radius: 10px;
+    margin:1% 1%;
+    font: 1.0em/2.0em "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+}
+
+.navibar {
+	width:85%;
+    height:auto;
+    background-color: rgba(0, 122, 200, .7);
+    background-color: rgb(0, 122, 200) \9;
+    border: 5px solid grey;
+	border-radius: 15px 15px;
+    padding: 3%;
+    margin:3% auto;
+}
+
+#input_year {
+    width:35%;
+    height: 30px;
+    border-radius: 5px;
+    font-family: "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    text-align: center;
+}
+
+#btn_go {
+    width:auto;
+    height: 30px;
+    border-radius: 5px;
+    font: 1.0em/2.0em "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+}
+
+.alert-block {
+    background-color: rgb(255, 50, 50) \9;
+    background-color: rgba(255, 50, 50, .7);
+    width: 50%;
+    font: 18px "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    margin:3% auto;
+    padding: 5px;
+    border: 3px solid red;
+    border-radius: 5px;
+}
+
+.warning-block {
+    background:rgb(255, 212, 42) \9;
+    background: rgba(255, 212, 42, .8);
+    width: 50%;
+    font: 18px "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    margin:3% auto;
+    padding: 5px;
+    border: 3px dashed black;
+    border-radius: 5px;
+}

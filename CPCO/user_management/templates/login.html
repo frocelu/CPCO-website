@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>中部施工處-應用系統登入網頁</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script type="text/javascript" src="/static/scripts/js/jquery-1.12.4.js"></script>
+        <!--[if IE]>
+            <link rel="stylesheet" type="text/css" href="/static/css/d676_ie8_theme.css">
+        <![endif]-->
+        <!--[if !(IE)]><!-->
+        <link rel="stylesheet" type="text/css" href="/static/css/d676_theme.css">
+        <!--<![endif]-->
+    </head>
+    <body>
+        <div class="order_navibar">
+            <h1 class="navititle" style="text-align:center;margin:0px auto;">中部施工處-應用系統</h1>
+        </div>
+        <div style="text-align: center">
+            <div style="margin: 5% auto 0 auto">
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="account" class="input_label">請輸入開機帳號：</label><br>
+                    <input type="text" value="" name="account" class="input_field"/><br>
+                    <label for="password" class="input_label">請輸入開機密碼：</label><br>
+                    <input type="password" value="" name="password" class="input_field"/><br><br>
+                    <input type="submit" value="登入" class="login_btn">
+                </form>
+            </div>
+        </div>
+        {%if errors%}
+            <div class="alert-block">{{errors}}</div>
+        {%endif%}
+    </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>管理使用者權限</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/scripts/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/static/scripts/js/jquery-ui-1.12.1.js"></script>
+    <script type="text/javascript" src="/static/scripts/jquery-ui.multidatespicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/scripts/css/mdp.css">
+    <!--[if IE]>
+        <link rel="stylesheet" type="text/css" href="/static/css/d676_ie8_theme.css">
+    <![endif]-->
+    <!--[if !(IE)]><!-->
+    <link rel="stylesheet" type="text/css" href="/static/css/d676_theme.css">
+    <!--<![endif]-->
+</head>
+
+<body>
+        <div class="order_navibar">
+            <h1 class="navititle" style="text-align:center;margin:0px auto;">中部施工處-訂餐系統</h1>
+        </div>
+        <div class="container">
+
+            <div class="menu">
+                <h3 style="text-align: center;font-size: 25px;">歡迎 {{username}}</h3><br />
+                <div class="div_btn_s"><a href="/order/" class="a_btn_s" style="background-color:green">訂餐系統首頁</a></div>
+                <div class="div_btn_s"><a href="/order/input_order/" class="a_btn_s">輸入訂單</a></div>
+                <div class="div_btn_s"><a href="/order/check_order/" class="a_btn_s">查詢訂餐狀況</a></div>
+                {% if member %}
+                <div class="div_btn_s"><a href="/order/set_user_default_state/" class="a_btn_s">輸入預設設定</a></div>
+                {% endif %}
+                {% if admin %}
+                <div class="div_btn_s" id="statics"><a href="/order/temp_to_order/" class="a_btn_s">產生每日統計</a></div>
+                <div class="div_btn_s"><a href="/order/modify_user/" class="a_btn_s">管理使用者權限</a></div>
+                <div class="div_btn_s"><a href="/order/check_daily_quantity/" class="a_btn_s">確認每日數量</a></div>
+                <div class="div_btn_s"><a href="/order/check_monthly_quantity/" class="a_btn_s">確認每月數量</a></div>
+                <div class="div_btn_s"><a href="/order/pressing_input/" class="a_btn_s">臨時輸入</a></div>
+                {% endif %}
+                <div class="div_btn_s"><a href="/logout/" class="a_btn_s" style="background-color: darkred">登出</a></div>
+            </div>
+
+            <div class="function" style="text-align: center">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <text>請輸入開機帳號</text><br />
+                    <input type="text" name="username" value="">
+                    <select name="action">
+                        <option value="add">新增使用者</option>
+                        <option value="del">刪除使用者</option>
+                        <option value="add-m">新增管理者</option>
+                        <option value="del-m">刪除管理者</option>
+                    </select>
+                    <input type="submit" value="送出">
+                </form>
+                <button id="show_m">顯示/隱藏管理者名單</button>
+                <button id="show_u">顯示/隱藏使用者名單</button>
+                <br>
+                <br>
+                <table border="1" style="margin: 0 auto; display: none" id="m_table">
+                    <tr>
+                        <th colspan="3">
+                            目前共有 {{all_managers.count}} 位管理者
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>帳號</th>
+                        <th>姓名</th>
+                        <th>組別</th>
+                    </tr>
+                        {% for m in all_managers %}
+                        <tr>
+                            {% for i in m.user_info_set.all %}
+                            <td>{{i.user_id}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.section}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                </table>
+                <br>
+                <table border="1" style="margin: 0 auto; display: none" id="user_table">
+                    <tr>
+                        <th colspan="3">
+                            目前共有 {{all_users.count}} 位使用者
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>帳號</th>
+                        <th>姓名</th>
+                        <th>組別</th>
+                    </tr>
+                        {% for m in all_users %}
+                        <tr>
+                            {% for i in m.user_info_set.all %}
+                            <td>{{i.user_id}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.section}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                </table>
+
+                        {% if msg %}
+                            <p class="warning-block">{{msg}}</p>
+                        {% endif %}
+
+                        {% if error %}
+                            <p class="alert-block">{{error}}</p>
+                        {% endif %}
+            </div>
+
+            <div class="content">
+                說明：<br><br>
+                本功能為設定伙食團使用者權限。<br>
+                <br>
+                <br>
+                新增使用者：將使用者新增至伙食團。<br><br>
+                刪除使用者：將使用者自伙食團移除。<br><br>
+                新增使用者：將管理者新增至伙食團。<br><br>
+                新增使用者：將管理者自伙食團移除。<br><br>
+            </div>
+        </div>
+</body>
+<script>
+    $('#show_m').click(function(){
+        $('#m_table').toggle(0);
+    });
+    $('#show_u').click(function(){
+        $('#user_table').toggle(0);
+    });
+</script>
+
+
+</html>

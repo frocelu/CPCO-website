@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>確認每日數量</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/scripts/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/static/scripts/js/jquery-ui-1.12.1.js"></script>
+    <script type="text/javascript" src="/static/scripts/jquery-ui.multidatespicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/scripts/css/mdp.css">
+    <!--[if IE]>
+        <link rel="stylesheet" type="text/css" href="/static/css/d676_ie8_theme.css">
+    <![endif]-->
+    <!--[if !(IE)]><!-->
+    <link rel="stylesheet" type="text/css" href="/static/css/d676_theme.css">
+    <!--<![endif]-->
+</head>
+<body>
+        <div class="order_navibar">
+            <h1 class="navititle" style="text-align:center;margin:0px auto;">中部施工處-訂餐系統</h1>
+        </div>
+        <div class="container">
+
+            <div class="menu">
+                <h3 style="text-align: center;font-size: 25px;">歡迎 {{username}}</h3><br />
+                <div class="div_btn_s"><a href="/order/" class="a_btn_s" style="background-color:green">訂餐系統首頁</a></div>
+                <div class="div_btn_s"><a href="/order/input_order/" class="a_btn_s">輸入訂單</a></div>
+                <div class="div_btn_s"><a href="/order/check_order/" class="a_btn_s">查詢訂餐狀況</a></div>
+                {% if member %}
+                <div class="div_btn_s"><a href="/order/set_user_default_state/" class="a_btn_s">輸入預設設定</a></div>
+                {% endif %}
+                {% if admin %}
+                <div class="div_btn_s" id="statics"><a href="/order/temp_to_order/" class="a_btn_s">產生每日統計</a></div>
+                <div class="div_btn_s"><a href="/order/modify_user/" class="a_btn_s">管理使用者權限</a></div>
+                <div class="div_btn_s"><a href="/order/check_daily_quantity/" class="a_btn_s">確認每日數量</a></div>
+                <div class="div_btn_s"><a href="/order/check_monthly_quantity/" class="a_btn_s">確認每月數量</a></div>
+                <div class="div_btn_s"><a href="/order/pressing_input/" class="a_btn_s">臨時輸入</a></div>
+                {% endif %}
+                <div class="div_btn_s"><a href="/logout/" class="a_btn_s" style="background-color: darkred">登出</a></div>
+            </div>
+
+            <div class="function" style="text-align: center">
+                <button id="print" class="btn_s">列印報表</button>
+                <br>
+                <br>
+                <div id="print-area" style="text-align: center">
+                <table border="1" style="margin: 0 auto;">
+                    <tr>
+                        <th colspan="4">{{下個工作天}}午/晚餐便當計數：</th>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>葷食</th>
+                        <th>素食</th>
+                        <th>總計</th>
+                    </tr>
+                    <tr>
+                        <td>午餐</td>
+                        <td>{{葷食計數}}</td>
+                        <td>{{素食計數}}</td>
+                        <td>{{午餐計數}}</td>
+                    </tr>
+                    <tr>
+                        <td>晚餐</td>
+                        <td>{{晚餐計數}}</td>
+                        <td>&nbsp;</td>
+                        <td>{{晚餐計數}}</td>
+                    </tr>
+                </table>
+                <br>
+                <table border="1" style="margin: 0 auto">
+                    <tr>
+                        <th colspan="2">{{下個工作天_b}}早餐便當計數：</th>
+                    </tr>
+                    <tr>
+                        <td>早餐個數：</td>
+                        <td>{{早餐計數}}</td>
+                    </tr>
+                <br>
+                </table>
+                </div>
+                        {% if msg %}
+                            <p class="warning-block">{{msg}}</p>
+                        {% endif %}
+                        {% if error %}
+                            <p class="alert-block">{{error}}</p>
+                        {% endif %}
+            </div>
+
+            <div class="content">
+                說明：<br><br>
+                本功能為統計下一個工作日之午/晚餐，及下下個工作日之早餐個數。<br><br>
+                請於每日下午3時10分後，至「產生本日統計」功能產生統計後，再列印報表。<br><br>
+                統計之個數不包含「無電腦帳號訂單臨時輸入」之結果，請自行增加。<br><br>
+            </div>
+        </div>
+</body>
+</html>
+<script type="text/javascript">
+    function printHtml(html) {
+    var bodyHtml = document.body.innerHTML;
+    document.body.innerHTML = html;
+    window.print();
+    document.body.innerHTML = bodyHtml;
+    }
+    function onprint() {
+    var html = $("#print-area").html();
+    printHtml(html);
+    }
+    $('#print').click(function(){
+        onprint();
+    })
+</script>

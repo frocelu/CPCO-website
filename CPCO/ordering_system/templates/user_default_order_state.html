@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>輸入預設設定</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--[if IE]>
+            <link rel="stylesheet" type="text/css" href="/static/css/d676_ie8_theme.css">
+        <![endif]-->
+        <!--[if !(IE)]><!-->
+            <link rel="stylesheet" type="text/css" href="/static/css/d676_theme.css">
+        <!--<![endif]-->
+    </head>
+    <body>
+        <div class="order_navibar">
+            <h1 class="navititle" style="text-align:center;margin:0px auto;">中部施工處-訂餐系統</h1>
+        </div>
+        <div class="container">
+
+            <div class="menu">
+                <h3 style="text-align: center;font-size: 25px;">歡迎 {{username}}</h3><br />
+                <div class="div_btn_s"><a href="/order/" class="a_btn_s" style="background-color:green">訂餐系統首頁</a></div>
+                <div class="div_btn_s"><a href="/order/input_order/" class="a_btn_s">輸入訂單</a></div>
+                <div class="div_btn_s"><a href="/order/check_order/" class="a_btn_s">查詢訂餐狀況</a></div>
+                {% if member %}
+                <div class="div_btn_s"><a href="/order/set_user_default_state/" class="a_btn_s">輸入預設設定</a></div>
+                {% endif %}
+                {% if admin %}
+                <div class="div_btn_s" id="statics"><a href="/order/temp_to_order/" class="a_btn_s">產生每日統計</a></div>
+                <div class="div_btn_s"><a href="/order/modify_user/" class="a_btn_s">管理使用者權限</a></div>
+                <div class="div_btn_s"><a href="/order/check_daily_quantity/" class="a_btn_s">確認每日數量</a></div>
+                <div class="div_btn_s"><a href="/order/check_monthly_quantity/" class="a_btn_s">確認每月數量</a></div>
+                <div class="div_btn_s"><a href="/order/pressing_input/" class="a_btn_s">臨時輸入</a></div>
+                {% endif %}
+                <div class="div_btn_s"><a href="/logout/" class="a_btn_s" style="background-color: darkred">登出</a></div>
+            </div>
+
+            <div class="function">
+                <form action="" method="POST">
+                {% csrf_token %}
+                <div style="text-align: center">
+                        <table style="text-align: center; margin: 0 auto">
+                            <tr>
+                                <th colspan="2">設定預設狀態</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="order_state" value="breakfast" {{ breakfast }}>早餐
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="order_state" value="lunch" {{ lunch }}>午餐
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="order_state" value="vegetarian" {{ vegetarian }}>素食
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="order_state" value="dinner" {{ dinner }}>晚餐</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" class="btn_s" value="送出">
+                                </td>
+                            </tr>
+                        </table>
+                        {% if msg %}
+                            <p class="warning-block">{{msg}}</p>
+                        {% endif %}
+                </div>
+                </form>
+            </div>
+
+            <div class="content">
+                說明：<br><br>
+                本功能為強制設定使用者預設訂餐狀態，如您無於「輸入訂單」功能輸入訂餐狀態，系統將會依本功能之設定帶入每日訂餐。<br>
+                <br>
+                <br>
+                舉例：<br><br>
+                假設A君預設吃早、午餐，並且午餐預定為素食，請勾選「早餐」、「午餐」、「素食」。<br>
+                <br>
+                假設B君預設不訂餐，請取消所有勾選。
+            </div>
+        </div>
+
+    </body>
+</html>

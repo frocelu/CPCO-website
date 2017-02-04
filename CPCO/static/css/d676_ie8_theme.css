@@ -1,0 +1,243 @@
+body {
+	font: 0.8em/1.6em "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+	background: white;
+}
+
+code, pre.code {
+	font: 11px/13px monospace;
+	background-color: #FFC;
+	padding: 2px;
+	border: 1px dotted grey;
+}
+
+.clear {clear: both;}
+
+.navititle{
+    font-size: 30px;
+    color:white;
+}
+
+.link {
+    font-size:16px; 
+    color: darkred;
+    padding: 0px 1%;
+    border: 2px dotted balck;
+}
+
+a:hover {text-decoration: underline;}
+
+
+.btn {
+	width:100px;
+    height:30px;
+	border-radius: 10px;
+    margin:1% 1%;
+    font: 1.0em/2.0em "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+}
+
+.navibar {
+	width:85%;
+    height:auto;
+    background-color: rgb(0, 122, 200);
+    border: 5px solid grey;
+	border-radius: 15px 15px;
+    padding: 3%;
+    margin:1% auto;
+}
+
+#input_year {
+    width:35%;
+    height: 30px;
+    border-radius: 5px;
+    font-family: "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    text-align: center;
+}
+
+#btn_go {
+    width:auto;
+    height: 30px;
+    border-radius: 5px;
+    font: 1.0em/2.0em "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+}
+
+.alert-block {
+    background-color: rgb(200, 50, 50);
+    width: 50%;
+    font: 18px "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    margin:3% auto;
+    padding: 5px;
+    border: 3px solid red;
+    border-radius: 5px;
+    color: white;
+    text-align: center
+}
+
+.warning-block {
+    background:rgb(255, 212, 42);
+    width: 50%;
+    font: 18px "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    margin:3% auto;
+    padding: 5px;
+    border: 3px dashed black;
+    border-radius: 5px;
+}
+
+.footer {
+    text-align: center;
+    font: 18px "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}
+
+.div_btn {
+    border: 2px dashed;
+    width: 10%;
+    background-color: #00A2E8;
+    margin-left: 5%;
+    display: inline-block;
+   float: left;
+}
+
+.a_btn {
+    display: block;
+    height: 100%;
+    padding: 30px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size:20px;
+    font: "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    color: white;
+}
+
+.label_btn {
+    padding-top: 1%;
+    padding-left: 3%;
+}
+
+.order_navibar {
+	width:85%;
+    height:auto;
+    background-color:#FFB634;
+    border: 5px solid grey;
+	border-radius: 15px 15px;
+    padding: 3%;
+    margin:0 auto 1% auto;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 20%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    text-align: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%;
+}
+
+#div1 {
+  font-size:48px;
+}
+
+.container{
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+}
+
+.menu{
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+    margin-left: 3.5%;
+    width: 22%;
+    vertical-align: top;
+    float: left;
+}
+
+.function{
+    position: relative;
+    display: inline-block;
+    border: 3px solid;
+    margin-left: 1%;
+    width: 43%;
+    vertical-align: top;
+    font-size: 18px;
+    padding: 10px;
+    float: left;
+}
+
+.content{
+    position: relative;
+    display: inline-block;
+    border: 2px dotted;
+    margin-left: 1%;
+    width: 20%;
+    vertical-align: top;
+    font-size: 18px;
+    padding: 10px;
+    float: left;
+}
+
+.a_btn_s{
+    display: block;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size:20px;
+    font: "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    color: white;
+}
+
+.div_btn_s {
+    border: 2px dashed;
+    background-color: #00A2E8;
+    margin-left: 2.5%;
+    width: 95%;
+}
+
+th{
+    padding: 18px;
+}
+
+td{
+    padding: 18px;
+}
+
+.btn_s{
+    width:100px;
+    height:35px;
+    font: 1.0em/2.0em "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+}
+
+.input_field{
+    width: 20%;
+    font: 25px "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    text-align: center;
+    padding: 10px 0;
+    margin: 1px 0 20px 0;
+    border-color: #858C93;
+}
+
+.input_label{
+    font: 25px "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+}
+
+.login_btn{
+    font: 25px "Trebuchet MS",Verdana,sans-serif,"Microsoft JhengHei";
+    width: 15%;
+}
